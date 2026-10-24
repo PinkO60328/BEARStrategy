@@ -26,9 +26,6 @@
       el.style.display = "";
       el.removeAttribute("aria-hidden");
     });
-    document.querySelectorAll("[data-dashboard]").forEach((el) => {
-      el.href = cfg.dashboardUrl;
-    });
     document.querySelectorAll("[data-etherscan]").forEach((el) => {
       if (!caReady || !cfg.etherscanUrl) {
         hideEl(el);
