@@ -1,15 +1,41 @@
 (function () {
   const cfg = window.BEARSTR || {};
 
+  // Placeholder strings like "CommingSoon" / "0xCommingSoon" are not valid CAs.
+  const ca = typeof cfg.ca === "string" ? cfg.ca : "";
+  const caReady =
+    ca.length >= 32 &&
+    ca !== "CommingSoon" &&
+    !/^0xCommingSoon$/i.test(ca) &&
+    ca.toLowerCase() !== "comingsoon";
+
+  function hideEl(el) {
+    el.style.display = "none";
+    el.setAttribute("aria-hidden", "true");
+    el.removeAttribute("href");
+  }
+
   function wireExternal() {
     document.querySelectorAll("[data-buy]").forEach((el) => {
+      if (!caReady || !cfg.buyUrl) {
+        hideEl(el);
+        return;
+      }
       el.href = cfg.buyUrl;
+      el.style.display = "";
+      el.removeAttribute("aria-hidden");
     });
     document.querySelectorAll("[data-dashboard]").forEach((el) => {
       el.href = cfg.dashboardUrl;
     });
     document.querySelectorAll("[data-etherscan]").forEach((el) => {
+      if (!caReady || !cfg.etherscanUrl) {
+        hideEl(el);
+        return;
+      }
       el.href = cfg.etherscanUrl;
+      el.style.display = "";
+      el.removeAttribute("aria-hidden");
     });
     document.querySelectorAll("[data-opensea]").forEach((el) => {
       el.href = cfg.openseaUrl;
