@@ -5,7 +5,7 @@ window.BEARSTR = {
   ticker: "BEARSTR",
   ca: "0xCommingSoon",
   nftContract: "0x02aa731631c6d7f8241d74f906f5b51724ab98f8",
-  buyUrl: "",
+  buyUrl: "https://app.uniswap.org/swap?outputCurrency=0xCommingSoon&chain=ethereum",
   dashboardUrl: "https://www.tokenstrategy.com/strategies/0xfb92bd1ee41f515630951e13af3028fcb6430776",
   dashboardAltUrl: "https://www.nftstrategy.fun/strategies/0xfb92bd1ee41f515630951e13af3028fcb6430776",
   etherscanUrl: "",

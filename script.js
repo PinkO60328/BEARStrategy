@@ -16,8 +16,9 @@
   }
 
   function wireExternal() {
+    // Always show Buy when buyUrl is set (even with placeholder CA).
     document.querySelectorAll("[data-buy]").forEach((el) => {
-      if (!caReady || !cfg.buyUrl) {
+      if (!cfg.buyUrl) {
         hideEl(el);
         return;
       }
